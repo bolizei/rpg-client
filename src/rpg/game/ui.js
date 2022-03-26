@@ -2,10 +2,9 @@ import $ from 'jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-export default class webui {
+export default class ui {
     constructor(game) {
         this._game = game
-
         this._webframes = {}
 
         $(() => { 

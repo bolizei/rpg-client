@@ -5,8 +5,27 @@ import event from './events.js'
 export default class graphics {
     constructor(game) {
         this._game = game
-        this._events = game._events
 
+        this._pixi = null
+
+        this._status = {
+            loaded: false,
+            running: false,            
+            gamestate: 0,
+        }
+
+        this._input = []
+    }
+
+
+
+    resizePixiRendererToWindowSize() {
+        this._pixi.view.width = $(window).width()
+        this._pixi.view.height = $(window).height()
+    }
+
+    initGraphics() {
+        // start PIXI        
         this._pixi = new PIXI.Application(
             {
                 width: '100',
@@ -15,20 +34,6 @@ export default class graphics {
             }
         )
 
-        this._status = {
-            loaded: false,
-            running: false,            
-            gamestate: 0,
-        }
-
-    }
-
-    resizePixiRendererToWindowSize() {
-        this._pixi.view.width = $(window).width()
-        this._pixi.view.height = $(window).height()
-    }
-
-    initGraphics() {
         // create dom element
         $('#game-screen').append(this._pixi.view)
         $(this._pixi.view).addClass('m-0')
@@ -60,10 +65,13 @@ export default class graphics {
             console.info('gameloop already running')
             return
         }
-
-        this._pixi.ticker.add((time) => {
-            this.loop(time)
-        })
+        try {
+            this._pixi.ticker.add((time) => {
+                this.loop(time)
+            })
+        } catch(error) {
+            console.log('could not start gameloop', error)
+        }
     }
 
     loop(deltatime) {
