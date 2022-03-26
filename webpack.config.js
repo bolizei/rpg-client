@@ -12,6 +12,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             hash: true,
+            favicon: 'src/res/img/favicon.ico',
             title: 'Game!'
         }),
         new CopyPlugin({
@@ -38,6 +39,11 @@ module.exports = {
                 ],
               }
         ]
+    },
+    devServer: {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
     },
     output: {
         filename: 'main.js',

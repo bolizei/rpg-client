@@ -43,7 +43,7 @@ export default class graphics {
     startLoop() {
         // if not loaded
         if(!this._status.loaded) {
-            console.log('gameloop cannot be started until game is ready')
+            console.log('gameloop will start when game is ready')
             
             this._game._events.once('graphics-loaded', () => {
                 this.startLoop()
@@ -67,7 +67,7 @@ export default class graphics {
     }
 
     loop(deltatime) {
-        console.log(deltatime)
+        //console.log(deltatime)
         this._status.running = true
         this._pixi.render()
     }

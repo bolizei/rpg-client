@@ -1,6 +1,8 @@
 export default class events {
-    constructor() {
+    constructor(game, logging = false) {
+        this._game = game
         this._events = []
+        this._logging = logging        
     }
 
     on(eventname, listener, once = false) {
@@ -8,7 +10,7 @@ export default class events {
             this._events[eventname] = []
         }
         this._events[eventname].push({'listener': listener, 'once': once})
-        console.log('added eventlistener to ', eventname, 'once:', once)
+        this._logging && console.log('added eventlistener to ', eventname, 'once:', once)
     }
 
     once(eventname, listener) {
@@ -20,18 +22,18 @@ export default class events {
     }
 
     fireEvent(eventname, data) {
-        console.log('called fire event', eventname)
+        this._logging && console.log('called fire event', eventname)
         let c = this.countListeners(eventname)
         if(c > 0) {
-            console.log('fire ' + c + ' events for', eventname)
+            this._logging && console.log('fire ' + c + ' events for', eventname)
 
             for(let i = 0; i < c; i++) {
                 
                 this._events[eventname][i].listener(data)
-                console.log('fired event', this._events[eventname][i].fn)
+                this._logging && console.log('fired event', this._events[eventname][i].listener)
 
                 if(this._events[eventname][i].once) {
-                    console.log('deleted event')
+                    this._logging && console.log('deleted event')
                     this._events[eventname].splice(i, 1)
                     if(i != c) {
                         i--
@@ -41,7 +43,7 @@ export default class events {
             }
 
         } else {
-            console.log('event ' + eventname + 'was called but had no listeners')
+            this._logging && console.log('event ' + eventname + 'was called but had no listeners')
         }
     }
 
@@ -50,9 +52,9 @@ export default class events {
         let i = this._events[eventname].findIndex(element => element.listener = listener)
         if(i > 0) {
             this._events[eventname].splice(i, 1)
-            console.log('removed a listener from', eventname)
+            this._logging && console.log('removed a listener from', eventname)
         } else {
-            console.log('cannot remove listener, it doesnt exist', eventname)
+            this._logging && console.log('cannot remove listener, it doesnt exist', eventname)
         }
     }
 }
