@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Game!</title>
+
+	</head>
+
+	<body class="text-light">
+		<div id="login-screen" class="container">
+			
+			<div class="row justify-content-center">
+				<div class="col-10 align-self-center">
+					<div class="m-4">
+						<img src="./res/img/RPG.png" class="rounded mx-auto d-block border">
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center ">
+				<div class="col-3 border bg-dark"> 
+					<form action="#">
+						<div class="m-3">
+							<label for="loginName" class="form-label">Login Name</label>
+							<input autocomplete="additional-name" autocomplete="additional-name" type="name" class="form-control" id="loginName">
+						</div>
+						<div class="m-3">
+							<label for="loginPass" class="form-label">Password</label>
+							<input autocomplete="additional-name" type="password" class="form-control" id="loginPass">
+						</div>
+						<div class="m-3">
+							<button type="submit" class="btn btn-primary" id="loginBtn">Submit</button>
+							<button type="submit" class="btn btn-secondary" id="registerBtn">Register</button>							
+						</div>
+					</form>	
+				</div>
+			</div>
+			
+		</div>		
+
+		<div id="lobby-screen" class="container h-100 w-100 align-items-center">
+			<div class="row w-100 justify-content-center">
+				<div class="col-7 bg-dark m-3">
+					<div class="card bg-dark">
+						<h5 class="card-header">Player 1</h5>
+						<div class="card-body">
+							<h5 class="card-title">Stats</h5>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row w-100 justify-content-center">
+				<div class="col-7 bg-dark m-3">
+					<div class="card bg-dark">
+						<h5 class="card-header">Game #2376yJ2nd</h5>
+						<div class="card-body">
+							<h5 class="card-title">2 hours, 15 minutes, 33 seconds..</h5>
+							<p class="card-text">
+								<button type="button" class="btn btn-primary">Player 1</button>
+								<button type="button" class="btn btn-primary">Player 2</button>
+								<button type="button" class="btn btn-primary">Player 3</button>
+								<button type="button" class="btn btn-primary">Player 4</button>
+							</p>
+						  	<a href="#" class="btn btn-primary">Join Mission</a>
+						</div>
+					</div>
+				</div>
+			</div>			
+			<div class="row w-100 justify-content-center">
+				<div class="col-7 bg-dark m-3">
+					<div class="card bg-dark">
+						<h5 class="card-header">Game #2376yJ2nd</h5>
+						<div class="card-body">
+							<h5 class="card-title">2 hours, 15 minutes, 33 seconds..</h5>
+							<p class="card-text">
+								<button type="button" class="btn btn-primary">Player 1</button>
+								<button type="button" class="btn btn-primary">Player 2</button>
+								<button type="button" class="btn btn-primary">Player 3</button>
+								<button type="button" class="btn btn-primary">Player 4</button>
+							</p>
+						  	<a href="#" class="btn btn-primary">Join Mission</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="game-screen" class="container-fluid p-0 m-0">
+		</div>
+	</body>
+</html>
