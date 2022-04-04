@@ -1,6 +1,5 @@
 import {io} from 'socket.io-client'
 import log from '../lib/logger.js'
-import config from '../../../config.js'
 
 // todo: ack of packets
 // send them with uids
@@ -9,7 +8,7 @@ import config from '../../../config.js'
 export default class network {
     constructor(game) {
         this._game = game;
-        this._socket = io('ws://' + config.gameserver_addr + ':' + config.gameserver_port)
+        this._socket = io('ws://' + this._game._settings.servers[0].ip + ':' + this._game._settings.servers[0].port)
         this.setupInputBuffer()        
     }
 
@@ -34,7 +33,7 @@ export default class network {
             return false
         }
 
-        if(this._inputBuffer.length >= config.max_network_queue) {
+        if(this._inputBuffer.length >= this._game._settings.max_network_queue) {
             // delete the last one
             // ask to resend it
             this._inputBuffer.splice(0, 1)

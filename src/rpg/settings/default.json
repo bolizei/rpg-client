@@ -1,0 +1,4 @@
+{
+    "gameserver_port": 1337,
+    "max_network_queue": 5000
+}

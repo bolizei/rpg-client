@@ -3,6 +3,7 @@ const path = require('path')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+//const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 module.exports = {
     entry: './src/rpg/rpg.js',
@@ -19,7 +20,8 @@ module.exports = {
             patterns: [
                 { from: 'src/res', to: 'res'}
             ]
-        })
+        }),
+        //new NodePolyfillPlugin(),
     ],
     module: {
         rules: [
@@ -48,5 +50,5 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
-    }
+    },
 }
